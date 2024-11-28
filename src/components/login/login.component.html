@@ -1,0 +1,51 @@
+<div class="main ">
+<div class="container">
+    <form class="p-3" [formGroup]="loginForm">
+        <div class="row g-0">
+            <div class="col text-center text-white rounded-top p-2 mb-3 bg-primary heading">
+                <span class="fs-3">Login</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" formControlName="email">
+                @if(Email.errors?.['required'] && Email.touched){
+                    <div class="form-text text-danger">
+                        Email is required
+                    </div>
+                }
+                @if(Email.errors?.['email'] ){
+                    <div class="form-text text-danger">
+                        Invalid email format
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+                @if(Password.errors?.['required'] && Password.touched){
+                    <div class="form-text text-danger">
+                        Password is required
+                    </div>
+                }
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-6">
+                <button  class="btn btn-primary" [disabled]="loginForm.invalid" (click)="onLogin()" (keyup.enter)="onLogin()">Login</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mt-3">
+                <span class="me-2">Don't have an account?</span><a routerLink="/register">Sign up</a>
+            </div>
+        </div>
+    </form>
+    
+    </div>
+
+</div>

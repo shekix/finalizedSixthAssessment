@@ -1,0 +1,64 @@
+
+<!-- <form (ngSubmit)="sendMessage(user,message)" >
+    <input type="text" [(ngModel)] = "user"  name="user" placeholder="username" readonly>
+  <input type="text" [(ngModel)]="message"  name="message" placeholder="message">
+  <button type="submit">Send</button>
+  </form>
+  
+  
+    @for (message of messages; track $index) {
+      <div>
+        {{message}}
+      </div>
+    } -->
+
+    <div class="container my-4">
+    
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center">
+            <h5>Chat App</h5>
+          </div>
+          <div class="card-body" style="height: 300px; overflow-y: auto;">
+          
+            <div *ngFor="let message of messages" class="mb-2">
+                @if(message.includes(user)){
+                  
+                    <strong class="float-end text-wrap" style="max-width:50%; background-color: rgb(245, 226, 201);  border-radius: 5px;">
+                      {{message.slice(message.indexOf(":")+1)}}
+                    </strong>        
+                    <br>
+                }
+                @else{
+                  
+                    <strong class="float-start text-wrap" style="max-width:50%;background-color: rgb(219, 216, 213); border-radius: 5px;">{{message}}</strong>
+                
+                  <br>
+                }
+                   
+            </div>
+          </div>
+      
+          <!-- Input Form -->
+          <div class="card-footer">
+            <form (ngSubmit)="sendMessage(user, message)" class="d-flex">
+              <input
+                type="text"
+                [(ngModel)]="user"
+                disabled="true"
+                name="user"
+                class="form-control me-2"
+                placeholder="Username"
+                readonly
+              />
+              <input
+                type="text"
+                [(ngModel)]="message"
+                name="message"
+                class="form-control me-2"
+                placeholder="Type "
+              />
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>

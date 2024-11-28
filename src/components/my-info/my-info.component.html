@@ -1,0 +1,28 @@
+
+
+<div class=" container d-flex justify-content-around align-items-center vh-100 ">
+    <div class="card mb-3 shadow-sm">
+        @for (item of data; track $index) {
+            <div class="card-body fs-3">
+                <h5 class="card-title text-primary fs-3 text-capitalize">
+                  <strong>Name</strong>  {{ item.firstName }} {{ item.lastName }}
+                </h5>
+                <p class="card-text">
+                  <strong>Email</strong>  {{ item.email }}
+                </p>
+                <p class="card-text">
+                  <strong>Gender</strong>  {{ item.gender }}
+                </p>
+                <p class="card-text">
+                  <strong>Date of Birth</strong>  {{ formatdate(item.dob) }}
+                </p>
+                <p class="card-text">
+                  <strong>Role</strong>  {{ item.role }}
+                </p>
+              </div>
+        }
+    </div>
+</div>
+
+
+  

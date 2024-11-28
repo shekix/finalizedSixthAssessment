@@ -1,0 +1,13 @@
+.container{
+    width: 30%;
+    padding-top: 5%;
+}
+
+
+
+.main{
+    height: 100vh;
+    background-image: url(../../../public/background.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}

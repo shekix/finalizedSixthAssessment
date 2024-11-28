@@ -1,0 +1,122 @@
+<div class="main">
+<div class="container">
+    <form [formGroup]="regsitrationForm">
+        <div class="row g-0">
+            <div class="col text-center p-2 mb-3 text-white rounded-top bg-primary heading">
+                <span class="fs-3">User Registration</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="Fname" formControlName="firstName">
+                    @if(FirstName.errors?.['required'] && FirstName.touched){
+                        <div class="form-text text-danger">
+                            FirstName is required
+                        </div>
+                    }
+                
+            </div>
+            <div class="col">
+                <label for="Lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="Lname" formControlName="lastName">
+                @if(LastName.errors?.['required'] && LastName.touched){
+                    <div class="form-text text-danger">
+                        LastName is required
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" formControlName="email">
+                @if(Email.errors?.['required'] && Email.touched){
+                    <div class="form-text text-danger">
+                        Email is required
+                    </div>
+                }
+                @if(Email.errors?.['email'] ){
+                    <div class="form-text text-danger">
+                        Invalid email format
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Gender">Gender</label>
+                <select class="form-select" id="Gender" aria-placeholder="select gender" formControlName="gender">
+                    <option value="" disabled> Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
+                  @if(Gender.errors?.['required'] && Gender.touched){
+                    <div class="form-text text-danger">
+                        Gender is required
+                    </div>
+                }
+              </div>
+              <div class="col">
+                <label for="dob">Date of birth</label>
+                <input type="Date" class="form-control" id="dob"  formControlName = "dob" >
+                @if(Dob.errors?.['required'] && Dob.touched){
+                    <div class="form-text text-danger">
+                        Dob is required
+                    </div>
+                }
+              </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="Role">Role</label>
+                <select class="form-select" id="Role" aria-placeholder="select Role" formControlName="role">
+                    <option value="" disabled> Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                    
+                  </select>
+                  @if(Role.errors?.['required'] && Role.touched){
+                    <div class="form-text text-danger">
+                        Role is required
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+                @if(Password.errors?.['required'] && Password.touched){
+                    <div class="form-text text-danger">
+                        Password is required
+                    </div>
+                }
+                @if(Password.errors?.['minlength']){
+                    <div class="form-text text-danger">
+                        atleat 6 characters required
+                    </div>
+                }
+            </div>
+            <div class="col mb-3">
+                <label for="cpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="cpassword" formControlName="cpassword">
+                <div class="form-text text-danger" [style.display]="confirmPassword">
+                    password does not match
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button  class="btn btn-primary" [disabled]="regsitrationForm.invalid" (click)="submit()" (keyup.enter)="submit()">Submit</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-3 ">
+                <span class="me-2"><b>Already have an account?</b></span><a routerLink="/login">Login</a>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
